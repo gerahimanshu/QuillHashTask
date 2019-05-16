@@ -1,7 +1,8 @@
-import {CHANGE_PAGE} from '../actions/types';
+import {CHANGE_PAGE, CHANGE_MENU_OPEN_STATUS} from '../actions/types';
 
 const initialState = {
-    page: 'portfolio'
+    page: 'portfolio',
+    isMenuOpened: false
 }
 
 const dashboardReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const dashboardReducer = (state = initialState, action) => {
                 ...state, 
                 page: action.payload
             }
+        case CHANGE_MENU_OPEN_STATUS:
+            return {
+                ...state,
+                isMenuOpened: action.payload
+            }    
         default:
             return state;
     }

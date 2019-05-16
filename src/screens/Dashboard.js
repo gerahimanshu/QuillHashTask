@@ -14,12 +14,17 @@ import { connect } from 'react-redux';
 import * as actions from '../redux/actions/dashboard';
 
 class Dashboard extends Component {
+
+    onHeaderButtonPressed = () => {
+        this.props.dispatch(actions.changeMenuOpenStatus(!this.props.dashboard.isMenuOpened))
+    }
+
     render() {
         const {page} = this.props.dashboard;
         return (
             <View style={styles.container}>
                 <View style={styles.innerContainer}>
-                    <Header page={page}/>
+                    <Header page={page} onHeaderButtonPressed={this.onHeaderButtonPressed}/>
                     {
                         page === 'home' ? 
                         <Home/> :
